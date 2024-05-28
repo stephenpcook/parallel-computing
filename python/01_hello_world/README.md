@@ -75,4 +75,4 @@ if comm.Get_rank() == 0:
     print(f"MPI world size is {comm.Get_size()}")
 ```
 
-Let's move on to the [next part of the course](https://github.com/UniExeterRSE/mpi-examples/blob/main/python/02_simple_comms/README.md).
+Let's move on to the [next part of the course](https://github.com/coding-for-reproducible-research/parallel-computing/blob/main/python/02_simple_comms/README.md).
