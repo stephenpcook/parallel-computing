@@ -134,4 +134,4 @@ MPI global product of data is 4168026667654053888
 
 There are some other MPI reduce operations available, but for anything sophisticated you will need to add additional layers of calculation.
 
-Now we have an overview of basic MPI functionality, lets move on to [solving a problem in parallel](https://github.com/coding-for-reproducible-research/parallel-computingmpi-examples/blob/main/python/04_parallel_fractal/README.md).
+Now we have an overview of basic MPI functionality, lets move on to [solving a problem in parallel](https://github.com/coding-for-reproducible-research/parallel-computing/blob/main/python/04_parallel_fractal/README.md).
