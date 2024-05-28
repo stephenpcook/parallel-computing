@@ -1,10 +1,10 @@
 ## Setting up our Python environment
 
-> TODO - why python? (because it's easy to start and progress quickly), MPI can be used in many languages
+The first part of this workshop is focussed on distributed memory parallelism with MPI, making use of the Python programming language. There are many different interfaces to MPI for many different languages, so we've chosen Python for the benefits it provides to write examples in an easy-to-understand format. Whilst the specific syntax of the commands learned in this part of the course wont be applicable across different languages, the overall code structures and concepts are highly transferrable, so once you have a solid grasp of the fundamentals of MPI you should be able to take thoses concepts to any language with an MPI interface and write parallel code!
 
 First, let's clone this repository
 ```
-git clone XXX
+git clone https://github.com/coding-for-reproducible-research/parallel-computing
 ```
 and navigate to the `python` directory of the repo. We can create a python virtual environment and activate it with the commands:
 ```
@@ -18,12 +18,7 @@ python -m pip install requirements.txt
 
 ## MPI Hello world
 
-In this example we will kick off a set of processes using mpirun/mpiexec and get them to report in. We first need to install the Python MPI interface, mpi4py. This can be easily achieved with:
-```shell
-pip install mpi4py
-```
-
-Now, open a python file (let's call it mpi_hello.py) in your editor of choice, and import the mpi4py module:
+In this example we will kick off a set of processes using mpirun/mpiexec and get them to report in. We first need to open a python file (let's call it mpi_hello.py) in your editor of choice, and import the mpi4py module:
 
 ```python
 # mpi_hello.py
