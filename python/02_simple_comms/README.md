@@ -85,4 +85,4 @@ elif comm.Get_rank() == 1:
 
 Note: The underlying MPI code (written in C) can only operate on 'raw' data, so Python does some heavy lifting for us here. If you need to pass any custom data structures around in a lower-level language like C++ you will need to create a method to convert the structure into raw data and back again (a process known as serialisation).
 
-Let's move on to the [next part of the course](https://github.com/UniExeterRSE/mpi-examples/blob/main/python/03_collective_comms/README.md)
+Let's move on to the [next part of the course](https://github.com/coding-for-reproducible-research/parallel-computing/blob/main/python/03_collective_comms/README.md)
