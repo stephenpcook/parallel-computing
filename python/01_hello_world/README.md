@@ -9,11 +9,11 @@ git clone https://github.com/coding-for-reproducible-research/parallel-computing
 and navigate to the `python` directory of the repo. We can create a python virtual environment and activate it with the commands:
 ```
 python -m venv .venv
-source ./venv/bin/activate
+source ./.venv/bin/activate
 ```
 Once this is done we can install our (small) list of python dependencies, stored in the `requirements.txt` file:
 ```
-python -m pip install requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ## MPI Hello world
