@@ -57,7 +57,7 @@ fractal = julia_set(grid, 80, c)
 
 If we run the python script (`python fractal.py`) it takes a few seconds to complete (this will vary depending on your machine), so we can already see that we are making our computer work reasonably hard with just a few lines of code. If we use the `time` command we can get a simple overview of how much time and resource are being used:
 
-```
+```shell
 $ time python parallel_fractal_complete.py
 python parallel_fractal_complete.py  5.96s user 3.37s system 123% cpu 7.558 total
 ```
@@ -104,7 +104,7 @@ if not fractal is None:
 
 With this method we have effectively offloaded the work of the function to multiple processes and ended up with the same result. Let's use `time` to see if we have increased the speed of the function:
 
-```
+```shell
 $ time python parallel_fractal.py
 python parallel_fractal.py  21.52s user 14.17s system 93% cpu 38.368 total
 

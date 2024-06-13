@@ -20,7 +20,7 @@ print(var)
 
 if we execute this file in serial (```python simple_comms.py```) it works fine because the root rank has created the variable, however in parallel (```mpirun -n 2 python simple_comms.py```) we get an error because the variable does not exist on the second MPI rank, something like this:
 
-```
+```shell
 Primary job  terminated normally, but 1 process returned
 a non-zero exit code. Per user-direction, the job has been aborted.
 ```

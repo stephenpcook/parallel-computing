@@ -9,13 +9,13 @@ The *Message Passing Interface* (MPI) is a standard for passing messages between
 
 MPI can be easily installed with Homebrew. Check your machine has homebrew installed with
 
-```
+```shell
 $ which brew
 ```
 
 If this returns the location of the `brew` executable, then you can proceed with:
 
-```
+```shell
 $ brew install open-mpi
 ```
 
@@ -29,7 +29,7 @@ In our case, we can install OpenMPI, which is a free and open source MPI impleme
 
 Spack is really simple to install, all you need to need to do is clone the Spack repository:
 
-```
+```shell
 $ git clone --depth=100 --branch=releases/v0.21 https://github.com/spack/spack.git ~/spack
 ```
 
@@ -42,7 +42,7 @@ $ source ~/spack/share/spack/setup-env.sh
 Every time you want to use Spack you will need to `source` this script, so it may be easier to add this to your shell login script, (i.e. ~/.bashrc, ~/.zshrc, etc.).
 We need to let Spack find any compilers in our system, which we can do with:
 
-```
+```shell
 $ spack compiler find
 ```
 
@@ -53,25 +53,25 @@ $ spack compiler find
 
 We can use Spack to install an MPI library, which will default to installing OpenMPI. If we run
 
-```
+```shell
 $ spack spec mpi
 ```
 
 we can see what Spack will install, and we can use
 
-```
+```shell
 $ spack install mpi
 ```
 
 to execute the installation. Once this is done, we can load the new mpi module with
 
-```
+```shell
 $ spack load mpi
 ```
 
 and check the installation with
 
-```
+```shell
 $ which mpirun
 ```
 
@@ -85,24 +85,24 @@ Python is required for the first section of the course. If you do now have a wor
 
 Alternatively, Python can be installed with Spack, using a similar method to the MPI spack installation above. We need to run:
 
-```
+```shell
 $ spack spec python
 ```
 
 to see which version is available to be installed by default. We can then use
 
-```
+```shell
 $ spack install python
 ```
 
 to execute the installation. Once this is done, we can load the new Python module with
 
-```
+```shell
 $ spack load python
 ```
 
 and check the installation with
 
-```
+```shell
 $ which python
 ```

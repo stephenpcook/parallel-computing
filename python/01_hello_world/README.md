@@ -4,20 +4,20 @@ The first part of this workshop is focussed on distributed memory parallelism wi
 
 First, let's clone this repository
 
-```
+```shell
 git clone https://github.com/coding-for-reproducible-research/parallel-computing
 ```
 
 and navigate to the `python` directory of the repo. We can create a python virtual environment and activate it with the commands:
 
-```
+```shell
 python -m venv .venv
 source ./venv/bin/activate
 ```
 
 Once this is done we can install our (small) list of python dependencies, stored in the `requirements.txt` file:
 
-```
+```shell
 python -m pip install requirements.txt
 ```
 
@@ -42,14 +42,14 @@ print("Hello world!")
 
 and execute the file with python, we get the expected outcome.
 
-```
+```shell
 $ python mpi_hello.py
 Hello world!
 ```
 
 If we try and run the program on multiple processes, we get a slightly different result:
 
-```
+```shell
 $ mpirun -n 2 python mpi_hello.py
 Hello world!
 Hello world!

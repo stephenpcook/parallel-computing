@@ -134,7 +134,7 @@ if comm.Get_rank() == 0:
 
 Here is the result:
 
-```
+```shell
 $ mpirun -n 4 python collective_comms.py
 ...
 Sum of rank 0 data is 970
