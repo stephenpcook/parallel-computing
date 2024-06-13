@@ -13,6 +13,7 @@ comm = MPI.COMM_WORLD
 ## MPI broadcasting
 
 The MPI broadcast method offers a simple and effective way to send a variable from one rank to all other ranks. Let's try it out:
+
 ```python
 if comm.Get_rank() == 0:
     msg = "Broadcasted message hello"
@@ -30,6 +31,7 @@ The simplicity of this method is great, but its utility is fairly limited as the
 MPI parallelism shines when you need to work on large amounts of data by enabling a program to pass a section of that data to a process and letting that process handle its own portion of the data. This approach is known as *decomposition*, and is ubiquitous across simulations that make use of MPI such as weather and ocean modelling, CFD, astrophysics, etc.
 Decomposition can be achieved in a number of ways, but the simplest way is to use the MPI *scatter* routine. Let's give it a try!
 We can add a `comm.barrier()` after the broadcast example we just completed and set up our scatter example. First, we need to create an example data set to scatter on the root rank. Lets create an array of random numbers, one for each rank:
+
 ```python
 if comm.Get_rank() == 0:
     rng = np.random.default_rng()
@@ -40,11 +42,13 @@ else:
 ```
 
 Now, to scatter that data from the root rank, we simply use the function:
+
 ```python
 data = comm.scatter(data, root=0)
 ```
 
 and each rank can print the data it recieved, to demonstrate that the process worked:
+
 ```python
 print(f"Rank {comm.Get_rank()} recieved data entry: {data}")
 ```
@@ -81,12 +85,15 @@ print(f"Rank {comm.Get_rank()} recieved data entry: {data}")
 The `np.array_split` method is particularly useful here, as it allows us to reliably split a numpy array into equal-ish parts without need to solve that particular problem ourselves.
 When we run this code with MPI we can see that there is a predictable pattern to how the MPI scatter method will distribute the data in the array, which we can leverage to ensure that each set of data we scatter remains coherent on each of the destination processes.
 If we then use the same code as in our previous example to `gather` the data:
+
 ```python
 data = comm.gather(data, root=0)
 
 print(f"Post gather: Rank {comm.Get_rank()} has data: {data}")
 ```
+
 we can see that the resulting data is all present and in the same order as before, but split into several numpy arrays. We can fix this issue with `np.concatenate```:
+
 ```python
 if not data is None:
     data = np.concatenate(data)
@@ -115,7 +122,9 @@ glob_sum = comm.reduce(data, MPI.SUM, root=0)
 if comm.Rank() == 0:
     print(f"MPI global sum = {np.sum(glob_sum)}")
 ```
+
 We can also compute the global product in a similar way:
+
 ```python
 glob_prod = comm.reduce(data, MPI.PROD, root=0)
 
@@ -124,6 +133,7 @@ if comm.Get_rank() == 0:
 ```
 
 Here is the result:
+
 ```
 $ mpirun -n 4 python collective_comms.py
 ...

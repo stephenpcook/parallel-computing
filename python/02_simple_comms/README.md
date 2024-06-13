@@ -19,12 +19,11 @@ print(var)
 ```
 
 if we execute this file in serial (```python simple_comms.py```) it works fine because the root rank has created the variable, however in parallel (```mpirun -n 2 python simple_comms.py```) we get an error because the variable does not exist on the second MPI rank, something like this:
+
 ```
 Primary job  terminated normally, but 1 process returned
 a non-zero exit code. Per user-direction, the job has been aborted.
 ```
-
-
 
 ## Point-to-point communications
 
@@ -56,6 +55,7 @@ Before we start the next example, we can add the line `comm.barrier()` in our Py
 
 In some instances, it might make sense for communications to only be non-blocking, which will enable the sending rank to continue with its process without needing to wait for confirmation of a potentially large message to be received. In this case, we can use the explicitly non-blocking methods, `isend` and `irecv`.
 The syntax is very similar for the sending process:
+
 ```python
     comm.send(var, dest=1, tag=23)
 ```
