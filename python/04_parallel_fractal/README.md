@@ -63,14 +63,16 @@ python parallel_fractal_complete.py  5.96s user 3.37s system 123% cpu 7.558 tota
 ```
 
 > **Note:**  We can also visualise the Julia set with the code snippet:
-> `
+>
+> ```
 > import matplotlib.pyplot as plt
 >
 > ...
 >
 > plt.imshow(fractal, extent=[-extent, extent, -extent, extent], aspect='equal')
 > plt.show()
-> `
+> ```
+>
 > but doing so will impact the numbers returned when we time our function, so it's important to remember this before trying to measure how long the function takes.
 
 ### Parallelising our problem
