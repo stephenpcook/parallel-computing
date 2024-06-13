@@ -1,3 +1,5 @@
+# Parallel Fractal
+
 ## Solving a problem in parallel
 
 In the previous three sections we have built up a foundation enough to be able to tackle a simple problem in parallel. In this case, the problem we will attempt to solve is constructing a fractal. This kind of problem is often known as "embarrassingly parallel" meaning that each element of the result has no dependency on any of the other elements, meaning that we can solve this problem in parallel without too much difficulty. Let's get started by creating a new script - `parallel_fractal.py`:
