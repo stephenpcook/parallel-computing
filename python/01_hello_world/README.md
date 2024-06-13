@@ -1,6 +1,6 @@
 ## Setting up our Python environment
 
-The first part of this workshop is focussed on distributed memory parallelism with MPI, making use of the Python programming language. There are many different interfaces to MPI for many different languages, so we've chosen Python for the benefits it provides to write examples in an easy-to-understand format. Whilst the specific syntax of the commands learned in this part of the course wont be applicable across different languages, the overall code structures and concepts are highly transferrable, so once you have a solid grasp of the fundamentals of MPI you should be able to take thoses concepts to any language with an MPI interface and write parallel code!
+The first part of this workshop is focussed on distributed memory parallelism with MPI, making use of the Python programming language. There are many different interfaces to MPI for many different languages, so we've chosen Python for the benefits it provides to write examples in an easy-to-understand format. Whilst the specific syntax of the commands learned in this part of the course wont be applicable across different languages, the overall code structures and concepts are highly transferable, so once you have a solid grasp of the fundamentals of MPI you should be able to take those concepts to any language with an MPI interface and write parallel code!
 
 First, let's clone this repository
 ```

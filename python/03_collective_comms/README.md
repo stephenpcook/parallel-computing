@@ -93,7 +93,7 @@ if not data is None:
 
 ## Global MPI operations
 
-For distributed memory problems, its difficult to get a holistic view of your entire data set as it doesnt exist in any one place. This means that performing global operations such as calculating the sum or product of a distributed data set also requires MPI. Fortunately, MPI has several functions that make this easier. Lets create a large set of data and scatter it across our processes, as before:
+For distributed memory problems, it's difficult to get a holistic view of your entire data set as it doesn't exist in any one place. This means that performing global operations such as calculating the sum or product of a distributed data set also requires MPI. Fortunately, MPI has several functions that make this easier. Lets create a large set of data and scatter it across our processes, as before:
 
 ```python
 if comm.Get_rank() == 0:
