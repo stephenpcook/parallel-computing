@@ -48,7 +48,7 @@ $ spack compiler find
 
 ### Installing MPI with spack
 
-> **Note:**
+> [!NOTE]
 > This method requires you to have a working set of compilers for C and Fortran. If you don't have these on your system the simplest way to get them is to [install the GNU compiler collection (GCC)](https://gcc.gnu.org/install).
 
 We can use Spack to install an MPI library, which will default to installing OpenMPI. If we run

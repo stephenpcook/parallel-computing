@@ -62,7 +62,8 @@ $ time python parallel_fractal_complete.py
 python parallel_fractal_complete.py  5.96s user 3.37s system 123% cpu 7.558 total
 ```
 
-> **Note:**  We can also visualise the Julia set with the code snippet:
+> [!NOTE]
+> We can also visualise the Julia set with the code snippet:
 >
 > ```python
 > import matplotlib.pyplot as plt
