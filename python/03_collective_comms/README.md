@@ -62,6 +62,7 @@ print(f"Post gather: Rank {comm.Get_rank()} has data: {data}")
 We can see that the data has been re-collected back onto the root rank. Note that the data is no longer a numpy array but can trivially be converted back into one.
 
 ## Large/non-uniform scatter and gather
+
 We can take the example above and apply it to a larger set of data. Lets create a sequential numpy array to demonstrate how the data is being broken up:
 
 ```python

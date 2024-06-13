@@ -6,6 +6,7 @@ The *Message Passing Interface* (MPI) is a standard for passing messages between
 > For this workshop you will need a multi-core machine which can run a unix-based terminal (i.e. Linux/WSL or Mac).
 
 ## MacOS installation
+
 MPI can be easily installed with Homebrew. Check your machine has homebrew installed with
 ```
 $ which brew
@@ -16,9 +17,11 @@ $ brew install open-mpi
 ```
 
 ## Linux/WSL installation
+
 An easy way to install MPI on Linux or WSL platforms is using the Spack package manager (this can also be done for MacOS but requires some additional steps).
 
 ### Using Spack package manager (multi-platform)
+
 In our case, we can install OpenMPI, which is a free and open source MPI implementation. OpenMPI can be installed in a number of different ways, but the recommended way is to use the Spack HPC package manager, which is in a class of its own in the way it handles different MPI implementations.
 
 Spack is really simple to install, all you need to need to do is clone the Spack repository:
@@ -36,6 +39,7 @@ $ spack compiler find
 ```
 
 ### Installing MPI with spack
+
 > **Note:**
 > This method requires you to have a working set of compilers for C and Fortran. If you don't have these on your system the simplest way to get them is to [install the GNU compiler collection (GCC)](https://gcc.gnu.org/install).
 
