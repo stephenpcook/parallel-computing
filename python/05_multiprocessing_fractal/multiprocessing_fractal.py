@@ -1,29 +1,17 @@
 # Run with command:
 # $ python multiprocessing_fractal.py
-from multiprocessing import Pool
-from functools import partial
 import numpy as np
 import warnings
 import matplotlib.pyplot as plt
+from functools import partial
+from multiprocessing import Pool
 
-def complex_grids(extent, n_cells, n_slices):
-    """Return the argand plane split into slices
+def complex_grid(extent, n_cells):
+    mesh_range = np.arange(-extent, extent, extent/n_cells)
+    x, y = np.meshgrid(mesh_range * 1j, mesh_range)
+    z = x + y
 
-    Split the argand plane:
-      [-extent*i,extent*i] * [extent, extent]
-    of n_cells*n_cells regions into n_slices slices, as separate horizontal
-    slices."""
-    mesh_range = np.arange(-extent, extent, 2*extent/n_cells)
-    meshes = []
-    for i_part in range(n_slices):
-        slice_lower = n_cells*i_part // n_slices
-        slice_upper = n_cells*(i_part + 1) // n_slices
-        mesh_range_slice = mesh_range[slice_lower:slice_upper]
-        x, y = np.meshgrid(mesh_range * 1j, mesh_range_slice)
-        z = x + y
-        meshes.append(z)
-
-    return meshes
+    return z
 
 
 def julia_set(grid, num_iter, c):
@@ -41,23 +29,22 @@ def julia_set(grid, num_iter, c):
 
     return fractal
 
-if __name__ == "__main__":
+c = -0.83 - 0.22 * 1j
+extent = 2
+cells = 2000
 
-    c = -0.83 - 0.22 * 1j
-    extent = 2
-    cells = 2000
+grid = complex_grid(extent, cells)
 
-    # Set the fixed parameters of julia_set so it can be used in a map
-    f = partial(julia_set, num_iter=80, c=c)
+# Parameters for multiprocessing
+n_processes = 5
+n_slices = 2000
 
-    n_processes = 100
-    n_slices = 100
+# Split up the grid to distribute to processes
+sliced_grid = np.array_split(grid, n_slices)
+with Pool(processes=n_processes) as p:
+    fractals = p.map(partial(julia_set, num_iter=80, c=c) , sliced_grid)
 
-    grids = complex_grids(extent, cells, n_slices)
-    with Pool(processes=n_processes) as p:
-        fractals = p.map(f, grids)
+fractal = np.concatenate(fractals)
 
-    fractal = np.concatenate(fractals)
-
-    # plt.imshow(fractal, extent=[-extent, extent, -extent, extent], aspect='equal')
-    # plt.show()
+#plt.imshow(fractal, extent=[-extent, extent, -extent, extent], aspect='equal')
+#plt.show()
