@@ -41,7 +41,7 @@ print(f"{msg} from rank {comm.Get_rank()}")
 ```
 
 Now, if we run this script in parallel we no longer get the error, because the variable now exists on the second rank thanks to the `send`/`recv` methods.
-In order to add an additional layer of safety to this process, we can add a tag to the message. This is an integer ID which ensures that the message is being recieved is being correctly used by the recieving process. This can be simply achieved by modifying the code to match the following:
+In order to add an additional layer of safety to this process, we can add a tag to the message. This is an integer ID which ensures that the message is being received is being correctly used by the receiving process. This can be simply achieved by modifying the code to match the following:
 
 ```python
     comm.send(var, dest=1, tag=23)
@@ -49,17 +49,18 @@ In order to add an additional layer of safety to this process, we can add a tag 
     var = comm.recv(source=0, tag=23)
 ```
 
-The types of communications provided by the `send```/```recv` methods are known as blocking communications, as there is a chance that the send process won't return until it gets a signal that the data has been recieved successfully. This means that sending large amounts of data between processes can result in significant stoppages to the program. In practice, the standard for this is not implemented uniformly, so the blocking/non-blocking nature of the communication can be dynamic or depend on the size of the message being passed.
+The types of communications provided by the `send```/```recv` methods are known as blocking communications, as there is a chance that the send process won't return until it gets a signal that the data has been received successfully. This means that sending large amounts of data between processes can result in significant stoppages to the program. In practice, the standard for this is not implemented uniformly, so the blocking/non-blocking nature of the communication can be dynamic or depend on the size of the message being passed.
 Before we start the next example, we can add the line `comm.barrier()` in our Python script to make sure that our processes only proceed once all other processes have reached this point, which will stop us getting confused about the output of our program.
 
 ## Non-blocking communications
 
-In some instances, it might make sense for communications to only be non-blocking, which will enable the sending rank to continue with its process without needing to wait for confirmation of a potentially large message to be recieved. In this case, we can use the explicitly non-blocking methods, `isend` and `irecv`.
+In some instances, it might make sense for communications to only be non-blocking, which will enable the sending rank to continue with its process without needing to wait for confirmation of a potentially large message to be received. In this case, we can use the explicitly non-blocking methods, `isend` and `irecv`.
 The syntax is very similar for the sending process:
 ```python
     comm.send(var, dest=1, tag=23)
 ```
-but the recieving process has more to unpack. The `comm.irecv` method returns a request object, which can be unpacked with the `wait` method which then returns the data:
+
+but the receiving process has more to unpack. The `comm.irecv` method returns a request object, which can be unpacked with the `wait` method which then returns the data:
 
 ```python
 if comm.Get_rank() == 0:
